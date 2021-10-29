@@ -1,27 +1,33 @@
-from tkinter import *
-from tkinter.ttk import *
-#Am immporting pythons standard GUI(Graphical User Interface) package
+import random
 
-from time import strftime
-#strftime is used to convert date and time objects into strings
+def guess(x):
+    random_number = random.randint(1, x)
+    guess = 0
+    while guess != random_number:
+        guess = int(input(f'Guess a number between 1 and {x}: '))
+        if guess < random_number:
+            print('Sorry, guess again. Too low.')
+        elif guess > random_number:
+            print('Sorry, guess again. Too high.')
 
-root = Tk()
-#Making the GUI canvas
-root.title("Clock")
-#Naming GUI base
+    print(f'Yay, congrats. You have guessed the number {random_number} correctly!!')
 
-def time():
-  string = strftime("%H:%M:%S %p")
-  #Making a string out of the time, and then giving its format
-  label.config(text=string)
-  #Assign the time to a label, which is a tkinter function 
-  label.after(1000, time)
-  #Saying that after every 1000ms(1 second), it will recall the time function, therefore rerendering the canvas
-  
-label = Label(root, font=("ds-digital", 80), background = "black", foreground = "cyan")
-label.pack(anchor="center")
-#Importing and aligning fonts stored locally
+def computer_guess(x):
+    low = 1
+    high = x
+    feedback = ''
+    while feedback != 'c':
+        if low != high:
+            guess = random.randint(low, high)
+        else:
+            guess = low  # could also be high b/c low = high
+        feedback = input(f'Is {guess} too high (H), too low (L), or correct (C)?? ').lower()
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
 
-time()
-mainloop()
-#Calling our functions
+    print(f'Yay! The computer guessed your number, {guess}, correctly!')
+
+
+guess(10)
