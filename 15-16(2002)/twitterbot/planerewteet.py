@@ -21,5 +21,8 @@ while (1 < 10):
             tweet.farotite()
             tweet.retweet()
             time.sleep(1080)
-    
-
+        except tweepy.TweetError as e:
+            print(e.reason)
+        except StopIteration:
+            break
+   
