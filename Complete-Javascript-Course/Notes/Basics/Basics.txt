@@ -1,2 +1,0 @@
-The course has just started and we are using the web console to write js.
-Its just some simple stuff for now like console.log("Hello World")
