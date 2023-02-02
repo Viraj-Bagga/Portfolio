@@ -14,8 +14,9 @@ twitter_oauth.set_access_token(ACCESS_TOKEN, TOKEN_SECRET)
 
 twitter_api = tweepy.API(twitter_oauth)
 
-print(twitter_api.verify_credentials())
-print("Succesfully logged in")
+try:
+    print(twitter_api.verify_credentials())
+    print("Succesfully logged in")
 except tweepy.TweepError as e:
     print(e)
 except Expection as e:
